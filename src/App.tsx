@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 import {NewComponent} from "./ExternalComponents";
 function App() {
-    const students = [
-        {id: 1, name: 'Vasya', age: 15},
-        {id: 2, name: 'Dima', age: 25},
-        {id: 3, name: 'Jon', age: 35}
+    const topCars = [
+        {manufacturer:'BMW', model:'m5cs'},
+        {manufacturer:'Mercedes', model:'e63s'},
+        {manufacturer:'Audi', model:'rs6'}
     ]
     return (<>
-            <NewComponent students={students}/>
+            <NewComponent cars={topCars}/>
         </>
     );
 }
