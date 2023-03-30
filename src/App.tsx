@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css';
+import {Button} from "./ExternalComponents";
 
 
 function App() {
-
-const subscriber = (name:string)=>{
-     console.log(name)
-}
+const btn  = (name:string, age:number) => {
+    console.log(name, age)
+    }
 
     return  (
         <>
-          <button onClick={()=>subscriber('Dima subscribe')}>MyChannel1</button>
-          <button onClick={()=>subscriber('Jon subscribe')}>MyChannel2</button>
+          <Button name={'MyChannel-1'} callback={()=>btn('Jon', 15)}/>
+          <Button name={'MyChannel-2'} callback={()=>btn('Dima', 30)}/>
+
          </>
     );
 }
