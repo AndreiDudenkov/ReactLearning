@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import {NewComponent} from "./ExternalComponents";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         {banknote: "ruble", nominal: 50, number: "h123456789"}
     ])
     const[ peremenna, functForFind] = useState('all')
-     let currentMoney = money
+    let currentMoney = money
 
     if (peremenna === "dollar"){
         currentMoney = money.filter((el)=> el.banknote === "dollar")
@@ -22,27 +23,12 @@ function App() {
         currentMoney = money.filter((el)=> el.banknote === "ruble")
     }
     const onClickHandler = (namebtn: string) => {
+
         functForFind(namebtn)
 
     }
-    return (<div>
-            <ul>
-                {currentMoney.map((objFromMoneyArr, index) => {
-                    return (
-                        <li key={index}>
-                            <span>{objFromMoneyArr.banknote}</span>
-                            <span>{objFromMoneyArr.nominal}</span>
-                            <span>{objFromMoneyArr.number}</span>
-                        </li>
-
-
-                    )
-                })}
-            </ul>
-            <button onClick={()=>onClickHandler('all')}>all</button>
-            <button onClick={()=>onClickHandler('dollar')}>dollar</button>
-            <button onClick={()=>onClickHandler('ruble')}>ruble</button>
-        </div>
+    return (
+        <NewComponent  currentMoneyPr={currentMoney} callback={onClickHandler}/>
     );
 }
 
