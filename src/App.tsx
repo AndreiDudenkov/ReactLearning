@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Button_Input} from "./ExternalComponents";
+import {Button} from "./Button";
+import {Input} from "./Input";
+
+
 
 
 function App() {
@@ -10,14 +13,27 @@ function App() {
             {message: 'message3'},
         ]
     )
-  const onClickHandler = (title:string) => {
+    let [title, setTitle] = useState("")
+
+    const addMessage = (title: string) => {
         let newMessage = {message: title}
         setMessage([newMessage, ...message])
-  }
+    }
+
+    const callbackButtonHandler = () => {
+        addMessage(title)
+        setTitle('')
+    }
+
+
+
+
 
     return (
-        <div className="App"  >
-            <Button_Input onClickHandler={onClickHandler} />
+        <div className="App">
+            <Input title={title} setTitle={setTitle} />
+            <Button name={'+'} callback={callbackButtonHandler}/>
+
             {message.map((el, index) => {
                 return ( <div>
 
