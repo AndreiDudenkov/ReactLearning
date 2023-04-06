@@ -1,41 +1,25 @@
-import React from "react";
+import React, {ChangeEvent, useState} from "react";
 
-type NewComponentType = {
-    currentMoneyPr: Array<MoneyType>
-    callback: (name: string) => void
-}
-type MoneyType = {
-    banknote: string,
-    nominal: number,
-    number: string
+type Button_InputPropsType = {
+    onClickHandler: (title:string)=> void
+
 }
 
-export const NewComponent = (props: NewComponentType) => {
+export const Button_Input = (props:Button_InputPropsType) =>{
+    let [title, setTitle] = useState("")
 
-    const onClickHandler = (param: string) => {
-        {
-            props.callback(param)
-        }
+    const inputChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
+         setTitle(event.currentTarget.value)
+
     }
-
-    return (
-        <div id='body'>
-            <ul>
-                {props.currentMoneyPr.map((objFromMoneyArr, index) => {
-                    return (
-                        <li key={index}>
-                            <span>{objFromMoneyArr.banknote}</span>
-                            <span>{objFromMoneyArr.nominal}</span>
-                            <span>{objFromMoneyArr.number}</span>
-                        </li>
-                    )
-                })}
-            </ul>
-            <div id='buttons'>
-                <button onClick={() => onClickHandler('all')}>all</button>
-                <button onClick={() => onClickHandler('dollar')}>dollar</button>
-                <button onClick={() => onClickHandler('ruble')}>ruble</button>
-            </div>
+    const onClickHandler = () => {
+        props.onClickHandler(title)
+        setTitle('')
+    }
+    return(
+        <div>
+            <input value={title} onChange={inputChangeHandler}/>
+            <button onClick={onClickHandler}>+</button>
         </div>
     )
 }

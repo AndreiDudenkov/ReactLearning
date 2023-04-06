@@ -1,14 +1,9 @@
 .App {
-  padding: 30px;
-  display: flex;
+  margin-top: 20px;
+margin-left: 40px;
 }
 
 .App > div {
   margin-right: 50px;
 }
-#body {
-  margin-left: 20px;
-}
-#buttons {
-  margin-left: 40px;
-}
+
